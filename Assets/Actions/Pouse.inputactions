@@ -1,0 +1,45 @@
+{
+    "name": "Pouse",
+    "maps": [
+        {
+            "name": "Pouse",
+            "id": "16f6e4b7-7bf0-42f0-8ed5-3ee2e18617c3",
+            "actions": [
+                {
+                    "name": "Pouse",
+                    "type": "Button",
+                    "id": "b4dfef81-9d3b-4dc5-9553-93180fc8c4ed",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "26aae97f-46bb-4f92-8b1e-dfda4d3daf7f",
+                    "path": "<Keyboard>/escape",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Pouse",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "efeb6542-277d-439b-8379-6d0078f68886",
+                    "path": "<XInputController>/start",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Pouse",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": []
+}
