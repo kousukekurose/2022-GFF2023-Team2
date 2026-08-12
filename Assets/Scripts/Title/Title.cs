@@ -1,8 +1,6 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 
 public class Title : MonoBehaviour
@@ -32,18 +30,21 @@ public class Title : MonoBehaviour
         SoundManager.Instance.PlayBGM(BGM);
         audioSource = GetComponent<AudioSource>();
     }
+
     public void ShowTutorial()
     {
         SoundManager.Instance.PlaySE(selectSE);
         animator.SetBool(tutorialId, true);
         firstSelectTutorial.Select();
     }
+
     public void HideTutorial()
     {
         SoundManager.Instance.PlaySE(selectSE);
         animator.SetBool(tutorialId, false);
         firstSelectTitle.Select();
     }
+
     public void LoadNextStage()
     {
         SoundManager.Instance.PlaySE(selectSE);
@@ -55,6 +56,7 @@ public class Title : MonoBehaviour
         audioSource.clip = sound;
         audioSource.Play();
     }
+    
     IEnumerator OnLoadNextScene()
     {
         animator.SetTrigger(fadeOutId);

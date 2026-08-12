@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class SoundManager : MonoBehaviour
@@ -8,7 +6,6 @@ public class SoundManager : MonoBehaviour
     AudioSource bgmAudioSource;
     [SerializeField]
     AudioSource seAudioSource;
-    #region 
 
     public static SoundManager Instance { get; private set; }
 
@@ -16,7 +13,7 @@ public class SoundManager : MonoBehaviour
     {
         Instance = this;
     }
-    #endregion
+    
     public void PlayBGM(AudioClip clip)
     {
         bgmAudioSource.clip = clip;
@@ -26,6 +23,7 @@ public class SoundManager : MonoBehaviour
         }
         bgmAudioSource.Play();
     }
+
     public void PlaySE(AudioClip clip)
     {
         if (clip == null)
@@ -34,6 +32,7 @@ public class SoundManager : MonoBehaviour
         }
         seAudioSource.PlayOneShot(clip);
     }
+    
     public void ChangeVolume(float bgm, float se)
     {
         bgmAudioSource.volume = bgm;
