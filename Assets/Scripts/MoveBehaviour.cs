@@ -31,11 +31,11 @@ public class MoveBehaviour : MonoBehaviour
     [SerializeField]
     Animator spareBatteryItemAnimator = null;
 
-    Vector3 player_pos;
+    private Vector3 player_pos;
 
-    bool OnAvoidance = true;
+    private bool OnAvoidance = true;
 
-    AudioSource audioSource;
+    private AudioSource audioSource;
     [SerializeField]
     private AudioClip playerAttackSE = null;
     [SerializeField]
@@ -52,11 +52,11 @@ public class MoveBehaviour : MonoBehaviour
         Avoidance,
         Stan,
     }
-    MotionState currentState = MotionState.Locomotion;
+    private MotionState currentState = MotionState.Locomotion;
 
     [SerializeField]
     private Animator animator = null;
-    int baseLayer;
+    private int baseLayer;
     //static readonly int locomotionHash = Animator.StringToHash("Base Layer.Locomotion");
     static readonly int verticalId = Animator.StringToHash("Vertical");
     static readonly int horizontalId = Animator.StringToHash("Horizontal");
@@ -68,7 +68,7 @@ public class MoveBehaviour : MonoBehaviour
     static readonly int shieldId = Animator.StringToHash("Shield");
     static readonly int spareBatteryId = Animator.StringToHash("SpareBattery");
 
-    new Rigidbody rigidbody;
+    private Rigidbody rigidbody;
 
     // Start is called before the first frame update
     void Start()

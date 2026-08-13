@@ -7,8 +7,8 @@ public class Player : MonoBehaviour
     public int MultiType = 0;
     public bool isFree = true;
 
-    Vector2 moveInput = Vector2.zero;
-    Vector2 lookInput = Vector2.zero;
+    private Vector2 moveInput = Vector2.zero;
+    private Vector2 lookInput = Vector2.zero;
 
     public bool isTraking = false;
 
