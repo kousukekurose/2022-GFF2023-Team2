@@ -992,6 +992,7 @@ MonoBehaviour:
   NestedObjects:
   - {fileID: 1414750869}
   NetworkedBehaviours:
+  - {fileID: 680090192}
   - {fileID: 680090190}
   ForceRemoteRenderTimeframe: 0
 --- !u!114 &680090192
@@ -1411,7 +1412,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6098369688506955464, guid: 58c5deda85856744a82a6501c8bab9cf, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6098369688506955471, guid: 58c5deda85856744a82a6501c8bab9cf, type: 3}
       propertyPath: m_Pivot.x
@@ -2958,6 +2959,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 520d28fd29d774d129870fb85a018027, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PhotonPlayerSpawner
+  spawnDummyPlayer: 1
+  dummySpawnPosition: {x: 2, y: 1, z: 0}
   PlayerPrefab: {fileID: 2760663688409228094, guid: 10672c7826cb146b1abb39ef6adaf81c, type: 3}
   photonGameManager: {fileID: 680090192}
 --- !u!114 &1270994601
@@ -3518,7 +3521,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 311653990}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0d30d5020fed5db468046e0bfe9976fe, type: 3}
   m_Name: 
@@ -4272,7 +4275,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1997107140}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: eb0b437ae0a882d4fab455242580a5c9, type: 3}
   m_Name: 
@@ -4452,7 +4455,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2056536009}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0d30d5020fed5db468046e0bfe9976fe, type: 3}
   m_Name: 

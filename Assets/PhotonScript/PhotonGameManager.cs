@@ -2,9 +2,12 @@ using UnityEngine;
 using TMPro;
 using System.Collections;
 using R3;
+using System.Collections.Generic;
+using Fusion;
 
-public class PhotonGameManager : MonoBehaviour
+public class PhotonGameManager : NetworkBehaviour
 {
+    private readonly List<PhotonPlayer> _spawnPlayer = new();
     [Header("HP UI 設定")]
     [SerializeField] private PlayerHpUI p1HpUI;
     [SerializeField] private PlayerHpUI p2HpUI;
@@ -42,7 +45,7 @@ public class PhotonGameManager : MonoBehaviour
 
         // 【初期状態】カウントダウンは隠し、参加UIは未参加の状態にしておく
         if(p1ReadyUI != null) p1ReadyUI.SetActive(true);
-        if(p2ReadyUI != null) p2ReadyUI.SetActive(false);
+        if(p2ReadyUI != null) p2ReadyUI.SetActive(true);
         if (countdownUI != null) countdownUI.SetActive(false);
         if (p1JoinedUI != null) p1JoinedUI.SetActive(false);
         if (p2JoinedUI != null) p2JoinedUI.SetActive(false);
@@ -56,7 +59,8 @@ public class PhotonGameManager : MonoBehaviour
     {
         _connectedPlayerCount++;
         Debug.Log($"[GameManager] プレイヤー {player.PlayerId} が合流（現在 {_connectedPlayerCount} 人）");
-
+        _spawnPlayer.Add(player);
+        player.enabled = false;
         // ⭕ 1. HP通知のリンク（R3）
         player.CurrentHp
             .Subscribe(hp =>
@@ -83,22 +87,29 @@ public class PhotonGameManager : MonoBehaviour
             p2ReadyUI.SetActive(false);
         }
 
-        // ⭕ 3. 【新挙動】2人（全員）揃ったら、満を持してカウントダウンを始動！
+        //2人（全員）揃ったら、1秒後にカウントダウンを始動！
         if (_connectedPlayerCount >= 2 && !_isGameStarted)
         {
             if (lobbyStatusText != null) lobbyStatusText.text = "対戦相手が見つかりました！";
-            CountdownRoutine();
+            StartCoroutine(CountdownRoutine());
         }
     }
 
     /// <summary>
-    /// ⭕ 2人が揃った後に、画面中央で秒数を数えるコルーチン
+    /// 人が揃った後に、画面中央で秒数を数えるコルーチン
     /// </summary>
-    private void CountdownRoutine()
+    private IEnumerator CountdownRoutine()
     {
+        yield return new WaitForSeconds(1f);
         // ロビー待機テキストを消して、カウントダウンUIを起動
-        if (lobbyStatusText != null) lobbyStatusText.enabled = false;
-        if (countdownUI != null) countdownUI.SetActive(true);
+        //if (lobbyStatusText != null) lobbyStatusText.enabled = false;
+        if (countdownUI != null)
+        {
+            countdownUI.SetActive(true);
+            _countDownAnimetor.SetTrigger(countDownId);
+            Debug.Log("アニメーション再生");
+        }
+        yield return new WaitForSeconds(4f);
 
         // カウントダウンが0になったらゲームスタート！
         StartGame();
@@ -112,6 +123,13 @@ public class PhotonGameManager : MonoBehaviour
         if (p1JoinedUI != null) p1JoinedUI.SetActive(false);
         if (p2JoinedUI != null) p2JoinedUI.SetActive(false);
         Debug.Log("[GameManager] ★2人対戦が正式に開始されました！");
+        foreach(var player in _spawnPlayer)
+        {
+            if(player != null)
+            {
+                player.enabled = true;
+            }
+        }
     }
     public void AddScore(int playerId, int amount)
     {
