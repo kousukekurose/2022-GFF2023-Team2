@@ -1,5 +1,6 @@
 {
   "dependencies": {
+    "com.cysharp.r3": "1.3.1",
     "com.unity.2d.sprite": "1.0.0",
     "com.unity.ai.navigation": "2.0.14",
     "com.unity.cinemachine": "2.10.7",
@@ -11,12 +12,17 @@
     "com.unity.ide.vscode": "1.2.5",
     "com.unity.inputsystem": "1.20.0",
     "com.unity.multiplayer.center": "1.0.1",
+    "com.unity.nuget.mono-cecil": "1.10.2",
     "com.unity.postprocessing": "3.5.4",
     "com.unity.recorder": "5.1.6",
     "com.unity.test-framework": "1.7.0",
     "com.unity.timeline": "1.8.12",
     "com.unity.ugui": "2.5.0",
     "com.unity.visualscripting": "1.9.11",
+    "org.nuget.observablecollections": "3.3.4",
+    "org.nuget.observablecollections.r3": "3.3.4",
+    "org.nuget.r3": "1.3.1",
+    "org.nuget.unitask": "2.5.11",
     "com.unity.modules.accessibility": "1.0.0",
     "com.unity.modules.adaptiveperformance": "1.0.0",
     "com.unity.modules.ai": "1.0.0",
@@ -51,5 +57,16 @@
     "com.unity.modules.video": "1.0.0",
     "com.unity.modules.wind": "1.0.0",
     "com.unity.modules.xr": "1.0.0"
-  }
+  },
+  "scopedRegistries": [
+    {
+      "name": "OpenUPM",
+      "url": "https://package.openupm.com",
+      "scopes": [
+        "org.nuget",
+        "com.cysharp",
+        "jp.hadashikick.vcontainer"
+      ]
+    }
+  ]
 }
